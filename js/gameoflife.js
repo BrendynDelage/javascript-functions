@@ -1,15 +1,59 @@
-function seed() {}
+const { throwStatement } = require("jscodeshift");
 
-function same([x, y], [j, k]) {}
+function seed(arguement) {
+  return Array.prototype.slice.call(arguments);
+}
+
+function same([x, y], [j, k]) {
+
+  if(x !== j || y !== k){
+    return false;
+  }
+
+  else{
+    return true;
+  }
+}
 
 // The game state to search for `cell` is passed as the `this` value of the function.
-function contains(cell) {}
 
-const printCell = (cell, state) => {};
+function contains(cell) {
+  return this.state.includes(cell);
+}
 
-const corners = (state = []) => {};
+const printCell = (cell, state) => {
 
-const printCells = (state) => {};
+  if(contains.call(state,cell) === true){
+    return "\u25A3";
+  }
+  else{
+    return "\u25A2"
+  }
+  
+};
+
+const corners = (state = []) => {
+  
+  if (state.length === 0) {
+    return {
+      topRight: [0, 0],
+      bottomLeft: [0, 0]
+
+    };
+  }
+  const xs = state.map(([x, _]) => x);
+  const ys = state.map(([_, y]) => y);
+  return {
+    topRight: [Math.max(...xs), Math.max(...ys)],
+    bottomLeft: [Math.min(...xs), Math.min(...ys)]
+  };
+};
+
+const printCells = (state) => {
+
+
+
+};
 
 const getNeighborsOf = ([x, y]) => {};
 
