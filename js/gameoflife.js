@@ -51,7 +51,7 @@ const corners = (state = []) => {
 
 const printCells = (state) => {
 
-  let bottomLeft, topRight  = corners(state);
+  const{ bottomLeft, topRight } = corners(state);
   string = '';
 
   for (let y = topRight[1]; y >= bottomLeft[1]; y--) {
@@ -65,7 +65,11 @@ const printCells = (state) => {
 };
 
 const getNeighborsOf = ([x, y]) => {
-  [x-1, y+1], [x, y+1], [x+1, y+1],[x-1, y], [x+1, y], [x-1, y-1], [x, y-1], [x+1, y-1]
+  
+  let neighbors = [[x-1, y+1], [x, y+1], [x+1, y+1],
+  [x-1, y], [x+1, y], [x-1, y-1], [x, y-1], [x+1, y-1]]
+
+  return neighbors
 };
 
 const getLivingNeighbors = (cell, state) => {
